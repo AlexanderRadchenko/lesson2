@@ -15,13 +15,27 @@
 * Посчитать и вывести суммарное количество продаж всех товаров
 * Посчитать и вывести среднее количество продаж всех товаров
 """
+import numpy as np
 
 def main():
-    """
-    Эта функция вызывается автоматически при запуске скрипта в консоли
-    В ней надо заменить pass на ваш код
-    """
-    pass
+    def counter (lst):
+        new_list=[]
+        total=0
+        for l in lst:
+            np_list= np.array(l['items_sold'])
+            new_list.append([l['product'], np_list.mean(), np_list.sum()])
+        
+        for n in new_list:
+            total += n[2]
+            print(f'Продукт: {n[0]}; Среднее кол-во продаж: {n[1]}; Сумма продаж: {n[2]}' )
+        print (f'Продано всего: {total}; Среднее кол-во продаж: {total/len(new_list)}' )
+
+    list_arg=[
+          {'product': 'iPhone 12', 'items_sold': [363, 500, 224, 358, 480, 476, 470, 216, 270, 388, 312, 186]}, 
+          {'product': 'Xiaomi Mi11', 'items_sold': [317, 267, 290, 431, 211, 354, 276, 526, 141, 453, 510, 316]},
+          {'product': 'Samsung Galaxy 21', 'items_sold': [343, 390, 238, 437, 214, 494, 441, 518, 212, 288, 272, 247]},
+        ]
+    counter(list_arg)
     
 if __name__ == "__main__":
     main()

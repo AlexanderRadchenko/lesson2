@@ -16,11 +16,19 @@
 """
 
 def main():
-    """
-    Эта функция вызывается автоматически при запуске скрипта в консоли
-    В ней надо заменить pass на ваш код
-    """
-    pass
+    def str_compare(str1, str2):
+        if type(str1) is not str or  type(str2) is not str:
+            return 0
+        if str1==str2:
+            return 1
+        if len(str1)>len(str2):
+            return 2
+        if str2=='learn':
+            return 3
+    params = [["333",3], ["333","333"], ["3333","333"],["33333333","learn"]] #2 последних условия в задании не взаимоисключающие
+    for p in params:
+        print(str_compare(p[0], p[1]))
+   
     
 if __name__ == "__main__":
     main()
